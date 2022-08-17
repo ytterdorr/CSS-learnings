@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: "Noto Sans", sans-serif;
+    line-height: 1.6;
+}
+
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+
+}
+
+section {
+    padding: 7em 0;
+}
+
+.container {
+    width: 85%;
+    margin: 0 auto;
+    max-width: 65em;
+}
+
+.split {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+
+.split>* {
+    flex-basis: 30%;
+    min-width: 15em;
+}
+
+.spacing>*+* {
+    margin-top: var(--spacer, 2rem)
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--clr-text, white);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.125rem;
+    padding: .5em 1.25em;
+    border-radius: .25em;
+    background: var(--clr-accent, blue);
+    transition:
+        transform 250ms ease-in-out,
+        opacity 220ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+    transform: scale(1.05);
+    opacity: .85;
+
+}
+
+.primary-title {
+    /* font-size: 4rem; */
+    font-size: clamp(3rem, calc(5vw + 1rem), 4.5rem);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+
+
+.section-title {
+    text-align: center;
+    font-size: clamp(2.5rem, calc(5vw + 1rem), 4rem);
+    line-height: 1;
+    color: #17353d;
+    margin-bottom: 3rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 15em 0;
+    color: white;
+    background-color: 222;
+    --clr-accent: orange;
+
+
+
+}
+
+@supports (background-blend-mode: multiply) {
+    .hero {
+        background: url(../images/shoe1.jpg),
+            radial-gradient(#666, #444);
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: multiply;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+}
+
+.featured__item {
+    display: block;
+    background: #eee;
+    position: relative;
+    transform: scale(.85);
+    transition: transform 250ms ease-in-out;
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+}
+
+.featured__item:hover,
+.featured__item:focus {
+    transform: scale(1);
+}
+
+.featured__item:hover .featured__details,
+.featured__item:focus .featured__details {
+    opacity: 1;
+    text-shadow: 0 0 5px #fff
+}
+
+
+.featured__item::after {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    /* border: 10px solid red; */
+    padding: 110% 110% 0 0;
+    background: red;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.featured__item span {
+    display: block;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.featured__details {
+    opacity: 0;
+    transition: opacity 250ms linear;
+}
+
+.product {
+    background: radial-gradient(var(--clr-inner, limegreen), var(--clr-outer, purple));
+    padding: 3em 0;
+    border-radius: 3em;
+    margin-bottom: 3em;
+    text-align: center;
+    padding: 2em;
+}
+
+.product__title {
+    font-size: 4em;
+    line-height: 1.1;
+    color: #fff;
+    text-shadow: 0 0 .2em rgba(0, 0, 0, .2);
+}
+
+.product__image {
+    /* margin: -5em 0 0 0; */
+}
+
+.shoe-red {
+    --clr-inner: red;
+    --clr-outer: orange;
+    --clr-accent: limegreen;
+}
+
+.shoe-white {
+    --clr-inner: white;
+    --clr-outer: grey;
+    --clr-accent: black;
+}
+
+.shoe-blue {
+    --clr-inner: blue;
+    --clr-outer: purple;
+    --clr-accent: orange;
+
+}
+
+@media (min-width: 45em) {
+    .product__image {
+        float: right;
+        width: 50%;
+        /* shape-outside: circle(50%); */
+        /* shape-margin: 2em; */
+    }
+
+    .product {
+        text-align: left;
+    }
+}
