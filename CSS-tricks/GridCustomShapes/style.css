@@ -1,0 +1,258 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+h1 {
+    margin: auto;
+    text-align: center;
+}
+
+.container {
+    --s: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: var(--s);
+}
+
+.gallery {
+    /* --s: 300; */
+    --g: 10px;
+    display: grid;
+}
+
+.gallery>img {
+    grid-area: 1/1;
+    width: var(--s);
+    aspect-ratio: 1.15;
+    object-fit: cover;
+    /* clip-path: circle(40%); */
+    /* clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 25% 100%); */
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transform: translate(var(--_x, 0), var(--_y, 0)) scale(var(--_t, 1));
+    transition: translate 0s linear, background-color .2s linear;
+    /* transition: background-color .2s; */
+    background-color: skyblue;
+
+}
+
+.gallery>img:hover {
+    background-color: orange;
+    z-index: 1;
+    --_t: 1.1;
+}
+
+.gallery>img:nth-child(1) {
+    --_y: calc(-100% - var(--g));
+}
+
+.gallery>img:nth-child(7) {
+    --_y: calc(100% + var(--g));
+}
+
+.gallery>img:nth-child(3),
+.gallery>img:nth-child(5) {
+    --_x: calc(-75% - .87*var(--g));
+}
+
+.gallery>img:nth-child(4),
+.gallery>img:nth-child(6) {
+    --_x: calc(75% + .87*var(--g));
+}
+
+.gallery>img:nth-child(3),
+.gallery>img:nth-child(4) {
+    --_y: calc(-50% - .5*var(--g));
+}
+
+.gallery>img:nth-child(5),
+.gallery>img:nth-child(6) {
+    --_y: calc(50% + .5*var(--g));
+}
+
+.rhombus-gallery {
+    --s: 150px;
+    display: grid;
+    gap: 10px;
+    grid: auto-flow var(--s) / repeat(2, var(--s));
+    place-items: center;
+    margin: calc(var(--s)/2);
+    transform: rotate(45deg);
+
+}
+
+.rhombus-gallery>img {
+    width: 141%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    transform: rotate(-45deg);
+    background: #6f6;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    /* transform: scale(1.2); */
+    transition: background-color .2s linear, width .2s linear;
+}
+
+.rhombus-gallery>img:hover {
+    width: 150%;
+    background-color: orange;
+}
+
+.triangular-gallery {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: auto 0 auto;
+    place-items: center;
+}
+
+.triangular-gallery>img {
+    width: 300px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    transition: .35s;
+    filter: grayscale();
+    cursor: pointer;
+    background-color: skyblue;
+}
+
+.triangular-gallery>img:nth-child(odd) {
+    background-color: orange;
+}
+
+.triangular-gallery>img:hover {
+    filter: grayscale(0%);
+}
+
+.triangular-gallery>img:nth-child(1) {
+    clip-path: polygon(0 0, 50% 0, 100% 100%, 0 100%);
+}
+
+.triangular-gallery>img:nth-child(2) {
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.triangular-gallery>img:nth-child(3) {
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.triangular-gallery>img:nth-child(4) {
+    clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
+}
+
+.triangular-gallery>img:nth-child(5) {
+    clip-path: polygon(50% 0, 100% 100%, 0% 100%);
+}
+
+.triangular-gallery>img:nth-child(6) {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
+}
+
+
+.pizza-pie-gallery {
+    width: fit-content;
+    margin: auto;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: auto 0 auto;
+    place-items: center;
+    border-radius: 50%;
+    /* background-color: skyblue; */
+    overflow: hidden;
+}
+
+.pizza-pie-gallery>img {
+    width: 200px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    background-color: pink;
+}
+
+.pizza-pie-gallery>img:hover {
+    background-color: skyblue;
+}
+
+.pizza-pie-gallery>img:nth-child(1) {
+    clip-path: polygon(0 0, 50% 0, 100% 100%, 0 100%);
+}
+
+.pizza-pie-gallery>img:nth-child(2) {
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.pizza-pie-gallery>img:nth-child(3) {
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.pizza-pie-gallery>img:nth-child(4) {
+    clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
+}
+
+.pizza-pie-gallery>img:nth-child(5) {
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.pizza-pie-gallery>img:nth-child(6) {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
+}
+
+.puzzle-gallery {
+    --s: 200px;
+    /* image size */
+    --g: 6px;
+    /* gap */
+    --r: 42px;
+    /* radius of puzzle round*/
+
+    display: grid;
+    grid: auto-flow var(--s)/repeat(2, var(--s));
+    /* width: fit-content;
+    grid-template-columns: auto auto; */
+    /* place-items: center; */
+    /* gap: 10px; */
+    gap: var(--g);
+}
+
+.puzzle-gallery>img {
+    object-fit: cover;
+    -webkit-mask: var(--_m);
+    mask: var(--_m);
+}
+
+.puzzle-gallery>img:is(:nth-child(1), :nth-child(4)) {
+    width: 100%;
+    height: calc(100% + var(--r));
+}
+
+.puzzle-gallery>img:is(:nth-child(2), :nth-child(3)) {
+    height: 100%;
+    width: calc(100% + var(--r));
+}
+
+.puzzle-gallery>img:nth-child(1) {
+    --_m:
+        radial-gradient(calc(var(--r) + var(--g)) at calc(100% + var(--g)) 50%, #0000 95%, #000) top/100% calc(100% - var(--r)) no-repeat,
+        radial-gradient(var(--r) at left 50% bottom var(--r), #000 95%, #0000);
+}
+
+.puzzle-gallery>img:nth-child(2) {
+    place-self: end;
+    --_m:
+        radial-gradient(calc(var(--r) + var(--g)) at 50% calc(100% + var(--g)), #0000 95%, #000) right/calc(100% - var(--r)) 100% no-repeat,
+        radial-gradient(var(--r) at top 50% left var(--r), #000 95%, #0000);
+}
+
+.puzzle-gallery>img:nth-child(3) {
+    --_m:
+        radial-gradient(calc(var(--r) + var(--g)) at 50% calc(0% - var(--g)), #0000 95%, #000) left/calc(100% - var(--r)) 100% no-repeat,
+        radial-gradient(var(--r) at top 50% right var(--r), #000 95%, #0000);
+}
+
+.puzzle-gallery>img:nth-child(4) {
+    place-self: end;
+    --_m:
+        radial-gradient(calc(var(--r) + var(--g)) at calc(0% - var(--g)) 50%, #0000 95%, #000) bottom/100% calc(100% - var(--r)) no-repeat,
+        radial-gradient(var(--r) at left 50% top var(--r), #000 95%, #0000);
+}
